@@ -3,7 +3,7 @@ require "string"
 
 
 function UpConvert(s)
-  UpConversions={{'IIIII','V'},{'VIV','IX'},{'VV','X'},{'XXXXX','L'},{'LXL','XC'},{'LL','C'},{'CCCCC','D'},{'DCD','CM'},{'DD','M'}}
+  UpConversions={{'IIIII','V'},{'VIV','IX'},{'VV','X'},{'XXXXX','L'},{'LXL','XC'},{'LL','C'},{'CCCCC','D'},{'DCD','CM'},{'DD','M'},{'MMMMMM','(VI)'},{'MMMMM','(V)'},{'MMMM','(IV)'}}
   TempString=s
   for i,v in ipairs(UpConversions) do
     TempString,ICount=string.gsub(TempString,v[1],v[2])
@@ -60,7 +60,7 @@ function AddTwoRomanNumerals(input1,input2)
   return RestoredSub
 end
 
-function InputMultipleRomanNumerals()  --warning: no tests on this one yet!
+function InputMultipleRomanNumerals()  --warning: no tests on this one yet! --needs input checks --also needs a way to setup io.read to take input from the test.
   sum=''
   while current ~='' do
       print("Enter another numeral. Just press enter when done.")
@@ -78,3 +78,25 @@ function InputMultipleRomanNumerals()  --warning: no tests on this one yet!
   
   return result
 end
+    function trim (s)
+      return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+    end
+--utility functions: this aids in testing all the roman numerals, it can also be used to add a bunch of numerals
+function importsinglefieldcsv(filename) --suggest: "roman-numeral-addition-truth-table.csv"
+myfile=io.input(filename)
+local lines ={}
+numerals = {''}
+    -- read the lines in table 'lines'
+    for line in io.lines() do
+      string_start, string_end=string.find(line,',')
+      string_end=string_end or 0
+      numeral=string.sub(line,string_end)
+      print("|"..numeral.."|")
+      numeral=string.gsub(numeral, "^%s*(.-)%s*$", "%1")
+      table.insert(lines, numeral)    
+    end
+    return lines  
+end
+
+--MAIN
+--print(InputMultipleRomanNumerals())
