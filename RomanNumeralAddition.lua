@@ -44,8 +44,8 @@ end
 --put it all together, starting from 2 numbers
 function AddTwoRomanNumerals(input1,input2)
   --extract subtractives
-  OnlyAdditivesForInput1=SwitchSubtractives(input1,'extract')
-  OnlyAdditivesForInput2=SwitchSubtractives(input2,'extract')
+  OnlyAdditivesForInput1=SwitchSubtractives(input1,'extract') 
+  OnlyAdditivesForInput2=SwitchSubtractives(input2,'extract') --DRY this out! just modify this to take both inputs at once
 
   --merge the two inputs so we can sort them out
   OnlyAdditives=OnlyAdditivesForInput1..OnlyAdditivesForInput2
