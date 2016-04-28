@@ -15,10 +15,12 @@ end
 function SwitchSubtractives(numeral,switch)
   AllSubtractives = {{'IV','IIII'},{'IX','VIIII'},{'XL','XXXX'},{'XC','LXXXX'},{'CD','CCCC'},{'CM','DCCCC'}}
   for i, v in ipairs(AllSubtractives) do
+    SubForm=v[1]
+    AddForm=v[2]
     if (switch =='extract') then
-      numeral, IVCount = string.gsub(numeral,v[1], v[2])--dry this by extracting this statement out of the if and replacing with a swap for the input values: first,second=v[1],v[2]
+      numeral, IVCount = string.gsub(numeral,SubForm, AddForm)--dry this by extracting this statement out of the if and replacing with a swap for the input values: first,second=v[1],v[2]
     elseif switch=='restore' then
-      numeral, IVCount = string.gsub(numeral,v[2], v[1])
+      numeral, IVCount = string.gsub(numeral,AddForm, SubForm)
       numeral=UpConvert(numeral)
     else
       error('Error!, incorrect switch value used, expecting extract or restore',switch)
