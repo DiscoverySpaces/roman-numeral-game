@@ -32,6 +32,7 @@ end
 
 
 function SortLargerToSmallerSymbols(s) --time this carefully to see if it might be faster to use a sorting algorithm rather than recreating the number with string.repetition
+  --performance monitoring on this is missing TBD
   --extricate and count all symbols then rebuild in order set by symbol table
   t = { 'M','D','C','L','X','V','I' }
   SortedNumeral=''
