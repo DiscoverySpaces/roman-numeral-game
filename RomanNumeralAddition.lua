@@ -28,7 +28,7 @@ function SwitchSubtractives(numeral,switch)
   end
   return numeral
 end
-
+--remember to build in steps for visualizing the manual calculation process
 
 
 function SortLargerToSmallerSymbols(s) --time this carefully to see if it might be faster to use a sorting algorithm rather than recreating the number with string.repetition
