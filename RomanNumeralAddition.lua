@@ -1,6 +1,6 @@
 require "string"
 
-
+-- k
 
 function UpConvert(s)
   UpConversions={{'IIIII','V'},{'VIV','IX'},{'VV','X'},{'XXXXX','L'},{'LXL','XC'},{'LL','C'},{'CCCCC','D'},{'DCD','CM'},{'DD','M'},{'MMMMMM','(VI)'},{'MMMMM','(V)'},{'MMMM','(IV)'}}
