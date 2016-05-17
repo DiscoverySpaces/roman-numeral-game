@@ -1,6 +1,6 @@
 require "string"
 
-
+-- k
 
 function UpConvert(s)
   UpConversions={{'IIIII','V'},{'VIV','IX'},{'VV','X'},{'XXXXX','L'},{'LXL','XC'},{'LL','C'},{'CCCCC','D'},{'DCD','CM'},{'DD','M'},{'MMMMMM','(VI)'},{'MMMMM','(V)'},{'MMMM','(IV)'}}
@@ -15,10 +15,12 @@ end
 function SwitchSubtractives(numeral,switch)
   AllSubtractives = {{'IV','IIII'},{'IX','VIIII'},{'XL','XXXX'},{'XC','LXXXX'},{'CD','CCCC'},{'CM','DCCCC'}}
   for i, v in ipairs(AllSubtractives) do
+    SubForm=v[1]
+    AddForm=v[2]
     if (switch =='extract') then
-      numeral, IVCount = string.gsub(numeral,v[1], v[2])--dry this by extracting this statement out of the if and replacing with a swap for the input values: first,second=v[1],v[2]
+      numeral, IVCount = string.gsub(numeral,SubForm, AddForm)--dry this by extracting this statement out of the if and replacing with a swap for the input values: first,second=v[1],v[2]
     elseif switch=='restore' then
-      numeral, IVCount = string.gsub(numeral,v[2], v[1])
+      numeral, IVCount = string.gsub(numeral,AddForm, SubForm)
       numeral=UpConvert(numeral)
     else
       error('Error!, incorrect switch value used, expecting extract or restore',switch)
@@ -26,10 +28,11 @@ function SwitchSubtractives(numeral,switch)
   end
   return numeral
 end
-
+--remember to build in steps for visualizing the manual calculation process
 
 
 function SortLargerToSmallerSymbols(s) --time this carefully to see if it might be faster to use a sorting algorithm rather than recreating the number with string.repetition
+  --performance monitoring on this is missing TBD
   --extricate and count all symbols then rebuild in order set by symbol table
   t = { 'M','D','C','L','X','V','I' }
   SortedNumeral=''
